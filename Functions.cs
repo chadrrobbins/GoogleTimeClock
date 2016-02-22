@@ -102,6 +102,42 @@ namespace GoogleTimeClock
             }
         }
 
+        public DateTime CreateDateTime(string when)
+        {
+            string date;
+            string time;
+            string ampm;
+            string chunk;
+
+            if (when.Length != 0)
+            {
+                date = when.Substring(0, when.IndexOf(" ")).Trim();
+                chunk = when.Substring(when.IndexOf(" ") + 1).Trim();
+                time = chunk.Substring(0, chunk.IndexOf(" ")).Trim();
+                ampm = chunk.Substring(chunk.IndexOf(" ") + 1).Trim();
+
+                string[] dat = date.Split('/');
+
+                string[] tim = time.Split(':');
+
+                int d = Convert.ToInt32(dat[1]);
+                int mon = Convert.ToInt32(dat[0]);
+                int y = Convert.ToInt32(dat[2]);
+                int h = Convert.ToInt32(tim[0]);
+                int min = Convert.ToInt32(tim[1]);
+                int s = Convert.ToInt32(tim[2]);
+
+                if (ampm.Equals("PM") && h != 12)
+                {
+                    h += 12;
+                }
+
+                return new DateTime(y, mon, d, h, min, s);
+            }
+
+            return new DateTime(1, 1, 1, 0, 0, 0);
+        }
+
         
     }
 }

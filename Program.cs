@@ -69,7 +69,10 @@ namespace CalendarQuickstart
             {
                 foreach (var eventItem in events.Items)
                 {
-                    string when = eventItem.Start.DateTime.ToString();
+                    // 1/15/2016 7:30:00 AM
+                    string start = eventItem.Start.DateTime.ToString();
+                    string end = eventItem.End.DateTime.ToString();
+
                     //DateTime whenDate = Convert.ToDateTime(when);
                     //DateTime whenDate = DateTime.ParseExact(when, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                     string eventStart = eventItem.Start.DateTime.ToString();
@@ -78,12 +81,13 @@ namespace CalendarQuickstart
                     string eventEnd = eventItem.End.DateTime.ToString();
                     //DateTime endTime = Convert.ToDateTime(eventEnd);
                     //DateTime endTime = DateTime.ParseExact(when, "hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-                    if (string.IsNullOrEmpty(when))
-                    {
-                        //when = eventItem.Start.Date;
-                    }
+
+                    DateTime start_date = Functions.CreateDateTime(start);
+                    //Console.WriteLine(Convert.ToString(start_date) + "CHAD IS A GOOBER");
+                    DateTime end_date = Functions.CreateDateTime(end);
+
                     //Console.WriteLine("{0} {1} {2} {3}", eventItem.Summary + "\r\n", whenDate.ToString("MM/DD/YYYY") + "\r\n", startTime.ToString("hh:mm tt") + "\r\n", endTime.ToString("hh:mm tt"));
-                    Console.WriteLine("{0} {1} {2}", eventItem.Summary + "\r\n", eventStart.ToString() + "\r\n", eventEnd.ToString() + "\r\n");
+                    Console.WriteLine("{0} {1} {2} {3}", eventItem.Summary + "\r\nDate: ", start_date.ToShortDateString() + "\r\nStart time: ", start_date.ToShortTimeString() + "\r\nEnd time: ", end_date.ToShortTimeString() + "\r\n");
                     Console.WriteLine("Total: " + (eventItem.End.DateTime - eventItem.Start.DateTime) + "\r\n");                }
             }
             else

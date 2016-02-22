@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,15 @@ namespace GoogleTimeClock
 {
     class Employee
     {
-        private String firstName;
-        private String lastName;
-        private int totalHours;
-
-        public Employee(String _firstName, String _lastName, int _totalHours)
+        private string firstName;
+        private string lastName;
+        private ArrayList jobs;
+        private string email;
+        
+        public Employee(string _firstName, string _lastName)
         {
             this.firstName = _firstName;
             this.lastName = _lastName;
-            this.totalHours = _totalHours;
         }
 
         public String FirstName
@@ -31,7 +32,7 @@ namespace GoogleTimeClock
             }
         }
 
-        public String LastName
+        public string LastName
         {
             get
             {
@@ -43,16 +44,36 @@ namespace GoogleTimeClock
             }
         }
 
-        public int TotalHours
+        public string Email
         {
             get
             {
-                return this.totalHours;
+                return email;
             }
+
             set
             {
-                this.totalHours = value;
+                email = value;
             }
+        }
+
+        public void AddJob(Job job)
+        {
+            jobs.Add(job);
+        }
+
+        public double GetTotalDailyHours(DateTime start, DateTime end)
+        {
+            double jobHours = 0;
+
+            foreach (Job job in jobs) {
+                if (!(job.JobWorkDayStart < start) && !(job.JobWorkDayEnd > end))
+                {
+                    jobHours += job.TotalHours;
+                }
+            }
+
+            return jobHours;
         }
     }
 }

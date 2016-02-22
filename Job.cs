@@ -8,19 +8,25 @@ namespace GoogleTimeClock
 {
     class Job
     {
-        private String contractorName;
-        private String jobTitle;
-        private String jobLocation;
-        private int totalHours;
+        private string contractorName;
+        private string jobTitle;
+        private string jobLocation;
+        private double totalHours;
+        private DateTime jobWorkDailyStart;  // Date and time the job is started on a particular day
+        private DateTime jobWorkDailyEnd;    // Date and time the job is ended on a particular day
 
-        public Job(String _contractorName, String _jobTitle, String _jobLocation, int _totalHours)
+
+        // Constructor
+        public Job(string _contractorName, string _jobTitle, string _jobLocation, DateTime start, DateTime end)
         {
-            this.contractorName = _contractorName;
-            this.jobTitle = _jobTitle;
-            this.jobLocation = _jobLocation;
-            this.totalHours = _totalHours;
+            contractorName = _contractorName;
+            jobTitle = _jobTitle;
+            jobLocation = _jobLocation;
+            jobWorkDailyStart = start;
+            jobWorkDailyEnd = end;
         }
 
+        // Property Declarations
         public String ContractorName
         {
             get
@@ -57,7 +63,7 @@ namespace GoogleTimeClock
             }
         }
 
-        public int TotalHours
+        public double TotalHours
         {
             get
             {
@@ -67,6 +73,40 @@ namespace GoogleTimeClock
             {
                 this.totalHours = value;
             }
+        }
+
+        public DateTime JobWorkDayStart
+        {
+            get
+            {
+                return jobWorkDailyStart;
+            }
+
+            set
+            {
+                jobWorkDailyStart = value;
+            }
+        }
+
+        public DateTime JobWorkDayEnd
+        {
+            get
+            {
+                return jobWorkDailyEnd;
+            }
+
+            set
+            {
+                jobWorkDailyEnd = value ;
+            }
+        }
+
+        // Public Method Declarations
+
+        // Private Method Declarations
+        private void CalcTotalHours()
+        {
+            totalHours = (jobWorkDailyEnd - jobWorkDailyStart).TotalDays;
         }
     }
 }
