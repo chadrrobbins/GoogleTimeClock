@@ -111,6 +111,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="PayPeriod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
