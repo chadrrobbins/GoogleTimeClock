@@ -71,13 +71,12 @@ namespace CalendarQuickstart
             {
                 foreach (var eventItem in events.Items)
                 {
-                    // 1/15/2016 7:30:00 AM
+                    // 1/15/2016 7:30:00 AM                    
                     string start = eventItem.Start.DateTime.ToString();
-                    string end = eventItem.End.DateTime.ToString();                    
+                    string end = eventItem.End.DateTime.ToString();
 
                     DateTime start_date = Functions.CreateDateTime(start);
-                    DateTime end_date = Functions.CreateDateTime(end);
-                    
+                    DateTime end_date = Functions.CreateDateTime(end);                    
 
                     Console.WriteLine("{0} {1} {2} {3} {4}", eventItem.Summary + "\r\nDate: ", start_date.ToShortDateString() + "\r\nStart time: ", start_date.ToShortTimeString() + "\r\nEnd time: ", end_date.ToShortTimeString() + "\r\nEmail:", eventItem.Creator.Email.ToString());
                     Console.WriteLine("Total: " + (eventItem.End.DateTime - eventItem.Start.DateTime) + "\r\n");                }

@@ -13,11 +13,14 @@ namespace GoogleTimeClock
         private string lastName;
         private ArrayList jobs;
         private string email;
+        private double totalHours;
         
-        public Employee(string _firstName, string _lastName)
+        public Employee(string _firstName, string _lastName, string _email, double _totalHours)
         {
-            this.firstName = _firstName;
-            this.lastName = _lastName;
+            firstName = _firstName;
+            lastName = _lastName;
+            email = _email;
+            totalHours = _totalHours;
         }
 
         public String FirstName
@@ -55,6 +58,20 @@ namespace GoogleTimeClock
             {
                 email = value;
             }
+        }
+
+        public double TotalHours
+        {
+            get
+            {
+                return totalHours;
+            }
+
+            set
+            {
+                totalHours = value;
+            }
+
         }
 
         public void AddJob(Job job)

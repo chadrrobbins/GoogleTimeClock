@@ -42,3 +42,4 @@ C:\Users\Adam\Documents\Visual Studio 2015\Projects\GoogleTimeClock\GoogleTimeCl
 C:\Users\Adam\Documents\Visual Studio 2015\Projects\GoogleTimeClock\GoogleTimeClock\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\Adam\Documents\Visual Studio 2015\Projects\GoogleTimeClock\GoogleTimeClock\bin\Debug\Zlib.Portable.xml
 C:\Users\Adam\Documents\Visual Studio 2015\Projects\GoogleTimeClock\GoogleTimeClock\obj\Debug\GoogleTimeClock.csprojResolveAssemblyReference.cache
+C:\Users\Robbins\documents\visual studio 2012\Projects\GoogleTimeClock\bin\Debug\GoogleTimeClock.exe.config
