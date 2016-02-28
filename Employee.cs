@@ -23,7 +23,7 @@ namespace GoogleTimeClock
             totalHours = _totalHours;
         }
 
-        public String FirstName
+        public string FirstName
         {
             get
             {
@@ -83,7 +83,8 @@ namespace GoogleTimeClock
         {
             double jobHours = 0;
 
-            foreach (Job job in jobs) {
+            foreach (Job job in jobs) 
+            {
                 if (!(job.JobWorkDayStart < start) && !(job.JobWorkDayEnd > end))
                 {
                     jobHours += job.TotalHours;

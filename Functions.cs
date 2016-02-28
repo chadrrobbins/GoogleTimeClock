@@ -138,6 +138,25 @@ namespace GoogleTimeClock
             return new DateTime(1, 1, 1, 0, 0, 0);
         }
 
+        public string GetContractorName(string eventInfo)
+        {
+            string contractorName;
+
+            contractorName = eventInfo.Substring(0, eventInfo.IndexOf(':')).Trim();
+
+            return contractorName;
+        }
+
+        public string GetJobTitle(string eventInfo)
+        {
+            string jobTitle;
+            string chunk;
+
+            chunk = eventInfo.Substring(eventInfo.IndexOf(' ') + 1).Trim();
+            jobTitle = chunk.Substring(0, chunk.IndexOf(' ')).Trim();
+
+            return jobTitle;
+        }
         
     }
 }
