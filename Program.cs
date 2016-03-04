@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CalendarQuickstart
 {
@@ -20,11 +21,11 @@ namespace CalendarQuickstart
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "Google Calendar API .NET Quickstart";
 
-
         static void Main(string[] args)
         {
             UserCredential credential;
             var Functions = new GoogleTimeClock.Functions();
+            string curFile = @"c:\Libraries\Documents\EmployeeHours.xls";
             //var service = new CalendarService(new BaseClientService.Initializer());
 
             //Open file IO stream.
@@ -39,6 +40,7 @@ namespace CalendarQuickstart
                 ApplicationName = ApplicationName,
             });
 
+            Excel.Application xlApp = new Excel.Application();            
             //Display application menu            
             //string task;
 
@@ -68,18 +70,25 @@ namespace CalendarQuickstart
             Events events = request.Execute();
             Console.WriteLine("Upcoming events:");
             if (events.Items != null && events.Items.Count > 0)
-            {
+            {                
                 foreach (var eventItem in events.Items)
                 {
-                    // 1/15/2016 7:30:00 AM
+                    // 1/15/2016 7:30:00 AM                    
+                    string email = eventItem.Creator.Email.ToString();
                     string start = eventItem.Start.DateTime.ToString();
-                    string end = eventItem.End.DateTime.ToString();                  
+                    string end = eventItem.End.DateTime.ToString();
+                    string summary = eventItem.Summary.ToString();
 
                     DateTime start_date = Functions.CreateDateTime(start);
-                    DateTime end_date = Functions.CreateDateTime(end);                    
+                    DateTime end_date = Functions.CreateDateTime(end);
 
-                    Console.WriteLine("{0} {1} {2} {3} {4}", eventItem.Summary + "\r\nDate: ", start_date.ToShortDateString() + "\r\nStart time: ", start_date.ToShortTimeString() + "\r\nEnd time: ", end_date.ToShortTimeString() + "\r\nEmail:", eventItem.Creator.Email.ToString());
-                    Console.WriteLine("Total: " + (eventItem.End.DateTime - eventItem.Start.DateTime) + "\r\n");                }
+                    string startDateString = start_date.ToShortDateString();
+                    string startTimeString = start_date.ToShortTimeString();
+                    string endTimeString = end_date.ToShortTimeString();
+
+                    Console.WriteLine("{0} {1} {2} {3} {4}", summary + "\r\nDate: ", startDateString + "\r\nStart time: ", startTimeString + "\r\nEnd time: ", endTimeString + "\r\nEmail:", email);
+                    Console.WriteLine("Total: " + (eventItem.End.DateTime - eventItem.Start.DateTime) + "\r\n");                    
+                }
             }
             else
             {

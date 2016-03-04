@@ -15,10 +15,8 @@ namespace GoogleTimeClock
         private string email;
         private double totalHours;
         
-        public Employee(string _firstName, string _lastName, string _email, double _totalHours)
+        public Employee(string _email, double _totalHours)
         {
-            firstName = _firstName;
-            lastName = _lastName;
             email = _email;
             totalHours = _totalHours;
         }

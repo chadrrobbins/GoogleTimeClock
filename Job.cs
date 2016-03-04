@@ -15,7 +15,6 @@ namespace GoogleTimeClock
         private DateTime jobWorkDailyStart;  // Date and time the job is started on a particular day
         private DateTime jobWorkDailyEnd;    // Date and time the job is ended on a particular day
 
-
         // Constructor
         public Job(string _contractorName, string _jobTitle, string _jobLocation, DateTime start, DateTime end)
         {
